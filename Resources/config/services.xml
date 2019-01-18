@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="zajca_doctrine_encrypt.orm_subscriber" class="Zajca\Bundle\EncryptBundle\Subscriber\EncryptionSubscriber">
+            <tag name="doctrine.event_subscriber" />
+            <argument id="@annotation_reader" />
+            <argument id="@zajca_doctrine_encrypt.encryptor" />
+        </service>
+
+        <service id="zajca_doctrine_encrypt.encryptor" class="Zajca\Bundle\EncryptBundle\Encryption\HaliteEncryptor">
+            <argument id="%zajca_doctrine_encrypt.secret_key%" />
+        </service>
+
+        <!--<service id="doctrine_migrations.diff_command" class="Doctrine\Bundle\MigrationsBundle\Command\MigrationsDiffDoctrineCommand">-->
+            <!--<tag name="console.command" />-->
+        <!--</service>-->
+
+    </services>
+
+</container>
