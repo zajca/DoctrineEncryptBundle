@@ -27,8 +27,8 @@ class ZajcaEncryptExtension extends Extension
         // Set parameters
         $container->setParameter('zajca_doctrine_encrypt.secret_key', $config['secret_key']);
         // Load service file
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yml');
+        $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
+        $loader->load('services.xml');
     }
     
     /**
